@@ -16,3 +16,8 @@ export const TARGET_OPTIONS = [
         option: 'text'
     },
 ]
+
+export const FILTER_OPTIONS = [
+	'name',
+	'text',
+]
