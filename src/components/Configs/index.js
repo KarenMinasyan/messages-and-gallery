@@ -1,27 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { changeColor, changeTarget } from '../../redux/ducks/configsDuck';
+import { configSelector } from '../../helpers/reduxSelctors';
 import { COLORS, TARGET_OPTIONS } from '../../helpers/constants';
 
-const Configs = ({handleConfigs}) => {
-	const [color, setColor] = useState(COLORS[0])
-	const [target, setTarget] = useState(TARGET_OPTIONS[0].title)
+const Configs = () => {
+	const dispatch = useDispatch()
+	const { color, target } = useSelector(configSelector)
 
-	useEffect(() => {
-		handleConfigs({color, target})
-	}, [color, target])
-
-	const changeColor = e => {
-		setColor(e.target.value)
+	const handleColorChange = e => {
+		dispatch(changeColor(e.target.value))
 	}
 
-	const changeTarget = e => {
-		setTarget(e.target.value)
+	const handleTargetChange = e => {
+		dispatch(changeTarget(e.target.value) )
 	}
 
 	return (
 		<>
 			<select
 				value={color}
-				onChange={changeColor}
+				onChange={handleColorChange}
 				name='selectColor'
 				id='selectColor'
 			>
@@ -33,7 +31,7 @@ const Configs = ({handleConfigs}) => {
 			</select>
 			<select
 				value={target}
-				onChange={changeTarget}
+				onChange={handleTargetChange}
 				name='selectTarget'
 				id='selectTarget'
 			>

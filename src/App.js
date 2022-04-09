@@ -1,4 +1,4 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Header from './components/Header';
 import Messages from './components/Messages';
@@ -8,13 +8,7 @@ import PopupMessage from './components/PopupMessage';
 
 
 const App = () => {
-	const [configs, setConfigs] = useState({})
-
 	const navigate = useNavigate()
-
-	const handleConfigs = useCallback((configObj) => {
-		setConfigs(configObj)
-	}, [])
 
 	const goBack = useCallback(() => {
 		navigate('..')
@@ -24,8 +18,8 @@ const App = () => {
     <>
 			<Header />
 			<Routes>
-				<Route path='' element={<Messages configs={configs} />} />
-				<Route path='configs' element={<Configs handleConfigs={handleConfigs} />} />
+				<Route path='' element={<Messages />} />
+				<Route path='configs' element={<Configs />} />
 				<Route path=':id' element={
 					<PopupWrapper onClose={goBack}>
 						<PopupMessage />
