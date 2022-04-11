@@ -12,6 +12,10 @@ const links = [
 	{
 		to: 'configs',
 		title: 'to configs'
+	},
+	{
+		to: 'cats',
+		title: 'to cats'
 	}
 ]
 
